@@ -1,0 +1,26 @@
+.input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    & label {
+        font-weight: bold;
+        margin-left: 1rem;
+        font-family: samim;
+        font-size: 18px;
+    }
+    & input {
+        width: 3rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font: inherit;
+        padding-left: 0.5rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .input {
+       
+        & label {
+            font-size: 15px;
+        }
+    }
+}

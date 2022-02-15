@@ -1,0 +1,23 @@
+.meals {
+    width: 70%;
+    display: inherit;
+    margin-top: 30px;
+    padding: 1rem;
+    text-align: end;
+    margin: auto;
+    margin-top: 1rem;
+    position: relative;
+
+    ::selection {
+        background-color: yellowgreen;
+    }
+    & ul {
+        list-style: none;
+    }
+}
+
+@media screen and (max-width: 578px) {
+    .meals{
+        width: 90%;
+    }
+}

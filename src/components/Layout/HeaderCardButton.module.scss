@@ -1,0 +1,95 @@
+.button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #4d1601;
+    color: white;
+    padding: 0.65rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 25px;
+    font-weight: 900;
+    &:hover,
+    &:active {
+        background-color: #2c0d00;
+    }
+}
+.bump {
+    animation: bump 300ms ease-out;
+}
+@keyframes bump {
+    0% {
+        transform: scale(0.9);
+    }
+    10% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.1);
+        background-color: #7d3a1e;
+    }
+    50% {
+        transform: scale(1.1);
+        background-color: #6f2708;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.icon {
+    width: 1.35rem;
+    height: 2rem;
+    margin-left: 0.7rem;
+    margin-top: -10px;
+    font-size: 25px;
+    color: yellow;
+}
+.badge {
+    background-color: #b94517;
+    padding: 0.25rem 1rem;
+    border-radius: 25px;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+.validBadge {
+    background-color: rgb(23, 162, 23);
+    padding: 0.25rem 1rem;
+    border-radius: 25px;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+.cart {
+    font-family: Rezvan;
+    color: yellow;
+    width: 60px;
+}
+@media screen and (max-width: 992px) {
+    .button {
+        padding: 0.5rem 1.5rem;
+        font-weight: 600;
+        font-size: 15px;
+    }
+    .icon {
+        font-size: 20px;
+        width: 1rem;
+        height: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    .badge,
+    .validBadge {
+        padding: 0.15rem 0.7rem;
+        margin-right: 1rem;
+    }
+}
+@media screen and (max-width: 578px) {
+    .icon {
+        font-size: 20px;
+        height: 1.5rem;
+        margin-left: 1.5rem;
+        padding-top: 0.4rem;
+    }
+    .button{
+        padding: 0.5rem 1.3rem;
+
+    }
+}

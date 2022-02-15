@@ -1,0 +1,82 @@
+.cart-item {
+    color: salmon;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 14px;
+    border: 1px solid orangered;
+}
+.name {
+    color: brown;
+    font-family: samim;
+    text-align: end;
+}
+.summary {
+    font-size: 22px;
+    color: black;
+    text-align: end;
+    width: 50%;
+    & .price {
+        padding: 7px;
+    }
+    & .amount {
+        border: 1px solid black;
+        padding: 7px;
+        background-color: rgb(155, 231, 252);
+        border-radius: 14px;
+    }
+}
+.actions {
+    font-size: 30px;
+    text-align: start;
+    width: 50%;
+    & button {
+        cursor: pointer;
+        font: inherit;
+        background-color: white;
+        border: 1px solid #902f05;
+        color: black;
+        padding: 0 1rem;
+        border-radius: 14px;
+        margin: 0 0.5rem;
+        font-weight: bold;
+        &:hover,
+        &:active {
+            background-color: #902f05;
+            color: white;
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .summary {
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .cart-item {
+        padding: 1rem;
+    }
+    .summary {
+        font-size: 18px;
+    }
+    .actions {
+        font-size: 20px;
+        & button {
+            margin: 0 0.3rem;
+        }
+    }
+}
+@media screen and (max-width: 576px) {
+    .summary {
+        font-size: 16px;
+        & .amount {
+            padding: 5px;
+        }
+    }
+    .actions {
+        font-size: 18px;
+        & button {
+            margin: 0 0.2rem;
+        }
+    }
+}
