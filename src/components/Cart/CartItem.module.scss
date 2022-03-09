@@ -1,82 +1,91 @@
+@import '../UI/MainStyle/MainStyle.scss';
 .cart-item {
-    color: salmon;
     padding: 2rem;
     margin: 1rem;
-    background-color: white;
-    border-radius: 14px;
-    border: 1px solid orangered;
+    background-color: $light-color;
+    border-radius: $mid-radius;
 }
 .name {
-    color: brown;
+    color: $dark-color;
     font-family: samim;
     text-align: end;
+    text-shadow: 2px 2px 5px $main-color;
 }
-.summary {
-    font-size: 22px;
-    color: black;
-    text-align: end;
-    width: 50%;
-    & .price {
-        padding: 7px;
-    }
-    & .amount {
-        border: 1px solid black;
-        padding: 7px;
-        background-color: rgb(155, 231, 252);
-        border-radius: 14px;
+.container{
+    @include flex-between;
+    width:90%;
+    margin:2rem 2rem 1rem 2rem;
+    & .summary {
+        color: $black-color;
+        text-align: end;
+        width: 50%;
+        & .price {
+            padding: 7px;
+            font-size:$high-font;
+            border-radius:$low-radius;
+        }
+        & .amount {
+            border: 1px solid $black-color;
+            padding: 7px;
+            background-color:decrease-color($warning-color,100%);
+            border-radius: $mid-radius;
+            color:$light-color;
+            font-size:$high-font;
+        }
+    }   
+    & .actions {
+        font-size: 30px;
+        text-align: start;
+        width: 50%;
+        @include flex-center;
     }
 }
-.actions {
-    font-size: 30px;
-    text-align: start;
-    width: 50%;
-    & button {
-        cursor: pointer;
-        font: inherit;
-        background-color: white;
-        border: 1px solid #902f05;
-        color: black;
-        padding: 0 1rem;
-        border-radius: 14px;
-        margin: 0 0.5rem;
-        font-weight: bold;
-        &:hover,
-        &:active {
-            background-color: #902f05;
-            color: white;
+@media screen and (max-width: $size-laptop) {
+   .container{
+    & .summary {
+        & .price {
+            font-size:$mid-font;
+        }
+        & .amount {
+            font-size:$mid-font;
         }
     }
+   }
 }
-@media screen and (max-width: 992px) {
-    .summary {
-        font-size: 20px;
-    }
-}
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $size-tablet) {
     .cart-item {
         padding: 1rem;
+        border-radius:$low-radius;
     }
-    .summary {
-        font-size: 18px;
-    }
-    .actions {
-        font-size: 20px;
-        & button {
-            margin: 0 0.3rem;
+   .container{
+    & .summary {
+        & .price {
+            font-size: $low-font;
+        }
+        & .amount {
+        font-size: $low-font;
+
         }
     }
+    & .actions {
+        font-size: 20px;
+    }
+   }
 }
-@media screen and (max-width: 576px) {
-    .summary {
-        font-size: 16px;
+@media screen and (max-width: $size-mobile) {
+   .container{
+    & .summary {
+        & .price {
+            font-size: $low-font;
+        }
         & .amount {
             padding: 5px;
+        font-size: $low-font;
         }
     }
-    .actions {
-        font-size: 18px;
-        & button {
-            margin: 0 0.2rem;
-        }
+    & .actions {
+        font-size: $mid-font;
+        
     }
+   }
 }

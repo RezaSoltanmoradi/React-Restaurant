@@ -26,9 +26,12 @@ const MealItems = (props) => {
                 <h3 className={styles.title}>{props.name}</h3>
             </div>
             <div className={styles.description}>{props.description}</div>
-            <div className={styles.price}>{price}</div>
-            <div>
+            <div className={styles.footer}>
                 <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
+                <div className={styles.text}>
+                    قیمت:
+                    <span className={styles.price}>{price}</span>
+                </div>
             </div>
             <hr />
         </li>

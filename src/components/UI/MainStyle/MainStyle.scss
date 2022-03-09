@@ -1,0 +1,87 @@
+// color vaiable
+$main-color: #bc6c25;
+$dark-color: #283618;
+$light-color: #fefae0;
+$success-color: #606c38;
+$warning-color: #dda15e;
+$black-color: black;
+$white-color: #ccc;
+$high-font: 22px;
+$mid-font: 19px;
+$low-font: 16px;
+$high-radius: 16px;
+$mid-radius: 12px;
+$low-radius: 7px;
+$size-Tv:1200px ;
+$size-laptop: 992px;
+$size-tablet:768px ;
+$size-mobile:576px ;
+
+// method
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin flex-column {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+@mixin timer {
+    transition: all 300ms ease-in-out;
+}
+@mixin valid-modal {
+    position: fixed;
+    top: 3vh;
+    left: 20%;
+    width: 60%;
+    max-height: 80vh;
+    margin: auto;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 1px 18px 10px rgba(209, 207, 207, 0.25);
+    margin-top: 3%;
+    z-index: 100;
+    transition: all 0.3s linear;
+    animation-name: modalAnim;
+    animation-duration: 0.2s;
+    overflow: auto;
+    background-color: increase-color($warning-color, 10%);
+}
+@mixin inValid-modal {
+    position: fixed;
+    top: 3vh;
+    left: 20%;
+    width: 60%;
+    max-height: 80vh;
+    margin: auto;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 1px 18px 10px rgba(209, 207, 207, 0.25);
+    margin-top: 3%;
+    z-index: 100;
+    transition: all 0.3s linear;
+    animation-name: modalAnim;
+    animation-duration: 0.2s;
+    overflow: auto;
+    background-color: decrease-color($white-color, 20%);
+}
+// funciton
+@function increase-color($color, $amount: 100%) {
+    $inverse: change-color($color, $hue: hue($color) + 30);
+    @return mix($inverse, $color, $amount);
+}
+@function decrease-color($color, $amount: 100%) {
+    $inverse: change-color($color, $hue: hue($color) - 30);
+    @return mix($inverse, $color, $amount);
+}

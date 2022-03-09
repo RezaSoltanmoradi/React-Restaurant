@@ -1,0 +1,21 @@
+.Layout {
+    background-color: white;
+    direction: rtl;
+}
+table {
+    width: 100%;
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 4rem 2rem;
+    margin: 3rem 1rem;
+    text-align: center;
+}
+thead {
+    border: 1 px solid red;
+    background-color: rgb(115, 82, 82);
+    color: white;
+}
+tbody {
+    background: skyblue;
+    color: black;
+}

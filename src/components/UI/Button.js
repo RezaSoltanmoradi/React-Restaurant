@@ -1,10 +1,8 @@
-import React from "react";
 import styles from "./Button.module.scss";
 const Button = ({ className, onClick, children, disabled, type }) => {
-    console.log("button RUNNING...");
     return (
         <button
-            type={type || 'button'}
+            type={type || "button"}
             className={`${className} ${styles.button}`}
             onClick={onClick}
             disabled={disabled}
@@ -13,4 +11,4 @@ const Button = ({ className, onClick, children, disabled, type }) => {
         </button>
     );
 };
-export default React.memo(Button);
+export default Button;

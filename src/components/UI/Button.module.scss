@@ -1,19 +1,35 @@
+@import "./MainStyle/MainStyle.scss";
 .button {
-    background-color: rgb(153, 244, 96);
-    padding: 0.75rem 2rem;
-    color: black;
-    font-size: 20px;
-    border-radius: 25px;
+    @include flex-center;
+    background-color: $success-color;
+    padding: 0.5rem 1.5rem;
+    color: $light-color;
+    font-size: $high-font;
+    border-radius: $mid-radius;
+    border: none;
+    font-family: sahel;
+    font-weight: bold;
     cursor: pointer;
     position: relative;
-    transition: all 300ms ease-in-out;
-    font-weight: 600;
+    margin: 0 1rem;
+    @include timer;
     &:hover,
     &:active {
-        background-color: rgb(85, 225, 64);
-        transform: scaley(1);
-        color: brown;
-        font-weight: 700;
-        letter-spacing: 1px;
+        opacity: 1;
+        background-color: increase-color($success-color, 100%);
+    }
+}
+@media screen and (max-width: $size-laptop) {
+    .button {
+        margin: 0 0.7rem;
+        padding: 0.4rem 1.2rem;
+        font-size: $mid-font;
+    }
+}
+@media screen and (max-width: $size-tablet) {
+    .button {
+        margin: 0 0.5rem;
+        padding: 0.3rem 1rem;
+        font-size: $low-font;
     }
 }

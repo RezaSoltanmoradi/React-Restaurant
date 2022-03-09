@@ -10,6 +10,7 @@ const MainContext = createContext({
     totalAmount: 0,
     addItem: (item) => {},
     removeItem: (id) => {},
+    claerCart: () => {},
     showCardItems: () => {},
     hideCardItems: () => {},
     cardIsShown: false,

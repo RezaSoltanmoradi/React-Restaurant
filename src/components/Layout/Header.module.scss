@@ -1,3 +1,4 @@
+@import '../UI/MainStyle/MainStyle.scss';
 .header {
     position: fixed;
     top: 0;
@@ -6,15 +7,15 @@
     height: auto;
     max-height: 6.5rem;
     min-height: 4rem;
-    background-color: #8a2b06;
-    color: white;
-    align-items: center;
-    display: flex;
+    background-color:decrease-color($dark-color,100%);
+    color: $light-color;
+    @include flex-center;
     padding: 5rem 5% 3rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 10;
     & h1 {
         font-family: sultan;
+        color: $light-color;
     }
 }
 
@@ -34,23 +35,20 @@
     list-style: none;
     text-decoration: none;
     display: inline;
-    font-size: 22px;
-    color: rgba(28, 231, 38, 0.9);
+    font-size: $high-font;
+    color:decrease-color($warning-color,100%);
     font-family: samim;
     font-weight: 700;
     &:hover {
-        color: rgb(111, 240, 117);
-        font-family: sahel;
-        font-size: 22px;
+        color: increase-color($warning-color,20%); 
         font-weight: 800;
     }
 }
 .entired {
     font-family: samim;
     display: inline;
-    // margin-left: 2rem;
-    font-size: 18px;
-    color: rgba(50, 200, 230, 0.9);
+    font-size: $mid-font;
+    color: $light-color;
 }
 @media screen and (max-width: 992px) {
     .entired {

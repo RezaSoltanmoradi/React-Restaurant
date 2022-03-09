@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+@import './components/UI/MainStyle/MainStyle.scss';
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #283618;
+}
+
+@font-face {
+    font-family: sultan;
+    src: url(./fonts/sultanadan/sultan-adan2.ttf);
+}
+@font-face {
+    font-family: Rezvan;
+    src: url(./fonts/A.Rezvan.ttf);
+}
+@font-face {
+    font-family: nasim;
+    src: url(./fonts/nasim.ttf);
+}
+@font-face {
+    font-family: sahel;
+    src: url(./fonts/Sahel-Bold.ttf);
+}
+@font-face {
+    font-family: samim;
+    src: url(./fonts/Samim-Bold.ttf);
+}
+@font-face {
+  font-family: DigmaSogand;
+  src: url(./fonts/DimaSogand.ttf);
+} 
+@font-face {
+  font-family: karbalaei;
+  src: url(./fonts/Karbalaei.ttf);
+} 
+/* @font-face {
+  font-family: lalezar;
+  src: url(./fonts/Lalezar-Regular.ttf);
+} */
+/*
+@font-face {
+  font-family: sogand;
+  src: url(./components/Ui/font/SOGAND.ttf);
+}
+@font-face {
+  font-family: vazir;
+  src: url(./components/Ui/font/Vazir.ttf);
+}
+@font-face {
+  font-family: yekanBold;
+  src: url(./components/Ui/font/WyekanBold_mypsdshop.ir.ttf);
+}
+@font-face {
+  font-family: Wyekan;
+  src: url(./components/Ui/font/W_yekan_mypsdshop.ir.ttf);
+}
+@font-face {
+  font-family: yekan;
+  src: url(./components/Ui/font/yekan.ttf);
+}
+@font-face {
+  font-family: sultan;
+  src: url(./components/Ui/font/sultanadan/sultan-adan.ttf);
+}
+
+@font-face {
+  font-family: sultan5;
+  src: url(./components/Ui/font/sultanadan/sultan-adan5.ttf);
+} */

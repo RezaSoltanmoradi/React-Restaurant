@@ -1,0 +1,62 @@
+@import '../MainStyle/MainStyle.scss';
+.login {
+    width: 90%;
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.control {
+    margin: 1rem 0;
+    align-items: stretch;
+   @include flex-center;
+   flex-direction:column;
+}
+
+.control label,
+.control input {
+    display: block;
+}
+
+.control label {
+    font-weight: bold;
+    flex: 1;
+    color: $black-color;
+    margin-bottom: 0.5rem;
+}
+
+.control input {
+    flex: 3;
+    font: inherit;
+    padding: 0.35rem 0.35rem;
+    border-radius: 6px;
+    border: 1px solid $dark-color;
+}
+
+.control input:focus {
+    outline: none;
+    border-color: decrease-color($main-color, 100%);
+}
+
+.control.invalid input {
+    border-color: decrease-color($main-color, 100%);
+    
+    background: #fbdada;
+}
+.content{
+    color:decrease-color($main-color, 100%);
+    text-align: center;
+    font-family:sahel;
+    font-size:$low-font;
+}
+@media (min-width: 768px) {
+    .control {
+        align-items: center;
+        flex-direction: row;
+
+    }
+    .content{
+        font-size:$mid-font;
+    }
+}
+

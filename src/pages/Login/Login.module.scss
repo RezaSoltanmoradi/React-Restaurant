@@ -1,0 +1,27 @@
+
+.login {
+    width: 90%;
+    max-width: 40rem;
+    margin: 10rem auto;
+    padding: 2rem;
+}
+.actions {
+    text-align: center;
+}
+.form {
+    margin-top: 20rem;
+}
+@media screen and (max-width: 576px) {
+    .login {
+        width: 80%;
+        max-width: 40rem;
+        margin: 10rem auto;
+        padding: 1.5rem;
+    }
+    .actions {
+        text-align: center;
+    }
+    .form {
+        margin-top: 20rem;
+    }
+}

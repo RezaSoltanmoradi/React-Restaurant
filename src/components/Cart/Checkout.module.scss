@@ -1,0 +1,75 @@
+@import '../UI/MainStyle/MainStyle.scss';
+.form {
+    direction: rtl;
+    margin: 1rem 0;
+    height: 17rem;
+    font-family: samim;
+    & .control {
+        @include flex-between;
+        margin: 10px 50px;
+        & input {
+            border-radius: $low-radius;
+            width: 70%;
+            font-weight: 700;
+            border: none;
+            padding: 0.3rem;
+            font-size: $mid-font;
+        }
+        & label {
+            color: $dark-color;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            display: block;
+            font-size:$mid-font;
+        }
+    }
+    & .inValid {
+        & input {
+            background: $light-color;
+        }
+    }
+    & .error {
+        text-align: center;
+        color:decrease-color($main-color,70%) ;
+        font-family: karbalaei;
+        font-size:$high-font;
+
+    }
+}
+@media screen and (max-width: $size-laptop) {
+    .form {
+        & .error {
+            text-align: center;
+            color:decrease-color($main-color,70%) ;
+            font-family: karbalaei;
+        font-size:$mid-font;
+
+        }
+    }
+}
+@media screen and (max-width: $size-tablet) {
+    .form {
+        & .control {
+            flex-direction: column;
+            align-items: center;
+            & input {
+                width: 100%;
+                font-size:$low-font;
+            }
+            & label {
+                color: $dark-color;
+                font-weight: bold;
+                margin-bottom: 0.25rem;
+                display: block;
+                font-size:$low-font;
+            }
+        }
+        & .error {
+            text-align: center;
+            color:decrease-color($main-color,70%) ;
+            font-family: karbalaei;
+        font-size:$low-font;
+
+        }
+    }
+}

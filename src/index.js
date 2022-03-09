@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import "antd/dist/antd.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.rtl.min.css";
+import "./index.scss";
 import App from "./App";
 import ContextProvider from "./components/context/ContextProvider";
 ReactDOM.render(

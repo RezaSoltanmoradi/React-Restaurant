@@ -4,9 +4,11 @@ import allRoutes from "../../helper/allRoutes";
 import MainContext from "../context/MainContext";
 import styles from "./Header.module.scss";
 import HeaderCardButton from "./HeaderCardButton";
+
 const Header = () => {
     const useCtx = useContext(MainContext);
-    const { isLoggedIn, onLogout, hideCardItems, userName } = useCtx;
+    const { isLoggedIn, onLogout, showCardItems, userName } = useCtx;
+
     return (
         <Fragment>
             <header className={styles.header}>
@@ -24,7 +26,9 @@ const Header = () => {
                             {isLoggedIn && (
                                 <div className="col-12 py-0 my-0">
                                     <div className="col-6 mb-0 pb-0 text-center ">
-                                        <p className={`${styles.entired} text-center`}>
+                                        <p
+                                            className={`${styles.entired} text-center`}
+                                        >
                                             {userName}
                                         </p>
                                     </div>
@@ -48,7 +52,7 @@ const Header = () => {
                         </div>
                         <div className="col-6  col-md-5 col-lg-3 offset-lg-3 offset-1 ">
                             {isLoggedIn && (
-                                <HeaderCardButton onClick={hideCardItems} />
+                                <HeaderCardButton onClick={showCardItems} />
                             )}
                         </div>
                     </div>

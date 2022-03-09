@@ -5,7 +5,7 @@ import React, { forwardRef } from "react";
 const Input = forwardRef((props, ref) => {
     return (
         <div className={styles.input}>
-            <input ref={ref} {...props.input} />
+            <input ref={ref} {...props.input} className="text-center" />
             <label htmlFor={props.input.id}>{props.label}</label>
         </div>
     );

@@ -1,13 +1,18 @@
 import { useEffect, useReducer, useState } from "react";
 import MainContext from "./MainContext";
 
-const defaultState = {
+const defaultState = JSON.parse(localStorage.getItem("data")) || {
     items: [],
     totalAmount: 0,
 };
+const types = {
+    addItem: "ADD_ITEM",
+    removeItem: "REMOVE_ITEM",
+    claerCart: "CLEAR_CART",
+};
 const CartReducer = (state, action) => {
     switch (action.type) {
-        case "ADD_ITEM": {
+        case types.addItem: {
             const updateTotalAmount =
                 state.totalAmount + action.item.price * action.item.amount;
 
@@ -16,7 +21,6 @@ const CartReducer = (state, action) => {
             );
             const existingCartItem = state.items[foundedItemIndex];
             let updatedItems;
-
             if (existingCartItem) {
                 const updatedItem = {
                     ...existingCartItem,
@@ -27,12 +31,18 @@ const CartReducer = (state, action) => {
             } else {
                 updatedItems = [...state.items, action.item];
             }
+            const newState = {
+                items: updatedItems,
+                totalAmount: updateTotalAmount,
+            };
+            localStorage.setItem("data", JSON.stringify(newState));
+
             return {
                 items: updatedItems,
                 totalAmount: updateTotalAmount,
             };
         }
-        case "REMOVE_ITEM": {
+        case types.removeItem: {
             const foundedItemIndex = state.items.findIndex(
                 (item) => action.id === item.productId
             );
@@ -52,20 +62,23 @@ const CartReducer = (state, action) => {
                 updatedItems = [...state.items];
                 updatedItems[foundedItemIndex] = updatedItem;
             }
-
-            return {
-                totalAmount: updateTotalAmount,
+            const newState = {
                 items: updatedItems,
+                totalAmount: updateTotalAmount,
             };
-        }
-        case "REMOVE_ALLITEM": {
-            console.log("case items: ", state.items);
+            localStorage.setItem("data", JSON.stringify(newState));
             return {
-                ...state,
-                totalAmount: 0,
-                items: [],
+                items: updatedItems,
+                totalAmount: updateTotalAmount,
             };
         }
+        case types.claerCart:
+            localStorage.removeItem("data");
+            return {
+                items: [],
+                totalAmount: 0,
+            };
+
         default: {
             return defaultState;
         }
@@ -78,13 +91,15 @@ const ContextProvider = (props) => {
     );
 
     const addItemtoCartHandler = (item) => {
-        dispatchCartAction({ type: "ADD_ITEM", item: item });
+        dispatchCartAction({ type: types.addItem, item: item });
     };
 
     const removeItemFromCartHandler = (id) => {
-        dispatchCartAction({ type: "REMOVE_ITEM", id: id });
+        dispatchCartAction({ type: types.removeItem, id: id });
     };
-
+    const claerCartItmesHandler = () => {
+        dispatchCartAction({ type: types.claerCart });
+    };
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState("");
 
@@ -104,24 +119,20 @@ const ContextProvider = (props) => {
         localStorage.setItem("isLoggedIn", "1");
         localStorage.setItem("userName", userName);
         setIsLoggedIn(true);
-        console.log("login Items: ", cartState.items);
     };
 
     const logoutHandler = () => {
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("userName");
-        dispatchCartAction({ type: "REMOVE_ALLITEM" });
+        dispatchCartAction({ type: types.claerCart });
         setIsLoggedIn(false);
-        setTimeout(() => {
-            console.log("logout Items: ", cartState.items);
-        }, 2000);
     };
     const [cardIsShown, setCardIsShown] = useState(false);
     const showCardHandler = () => {
-        setCardIsShown(false);
+        setCardIsShown(true);
     };
     const hideCardShown = () => {
-        setCardIsShown(true);
+        setCardIsShown(false);
     };
     const mainContext = {
         isLoggedIn: isLoggedIn,
@@ -131,6 +142,7 @@ const ContextProvider = (props) => {
         totalAmount: cartState.totalAmount,
         addItem: addItemtoCartHandler,
         removeItem: removeItemFromCartHandler,
+        claerCart: claerCartItmesHandler,
         showCardItems: showCardHandler,
         hideCardItems: hideCardShown,
         cardIsShown: cardIsShown,
