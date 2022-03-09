@@ -39,14 +39,6 @@ const App = () => {
                         path={allRoutes.homeRoute()}
                         element={<HomePage />}
                     />
-                    {/* <Route
-                        path={allRoutes.adminRoute()}
-                        element={<AdminPage />}
-                    /> */}
-                    {/* <Route
-                        path={`${allRoutes.categoryRoute()}/:id`}
-                        element={<Meals />}
-                    /> */}
                 </Routes>
             </Router>
         </Fragment>
