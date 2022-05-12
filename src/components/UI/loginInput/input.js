@@ -17,13 +17,14 @@ const Input = forwardRef((props, ref) => {
 
     switch (props.label) {
         case "Name":
-            content = "نام  معتبر نیست ( حداقل 4 )  ";
+            content = "نام  معتبر نیست ( حداقل 4 حرف )  ";
             break;
         case "E-Mail":
-            content = "ایمیل معتبر نیست ( @ شامل میشود)  ";
+            content = "ایمیل معتبر نیست (  شامل @ میشود)  ";
             break;
         default:
-            content = " (Reza1364) :پسورد معتبر نیست. یه چیزی مثل ";
+            content =
+                " پسورد شامل یک حرف بزرگ و یک عدد و بیش از 8 کاراکتر میباشد";
     }
     return (
         <div>
