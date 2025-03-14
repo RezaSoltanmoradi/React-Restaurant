@@ -1,0 +1,69 @@
+.mainAuth {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.login {
+  width: 90%;
+  max-width: 40rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
+  position: absolute;
+  & .btn {
+    display: block;
+    position: absolute !important;
+    bottom: 20px;
+  }
+}
+.loginSize {
+  min-height: 17rem;
+}
+.RegisterSize {
+  min-height: 20rem;
+}
+.actions {
+  text-align: center;
+}
+.form {
+  margin-top: 20rem;
+}
+.content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+  text-align: end;
+}
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 576px) {
+  .login {
+    width: 80%;
+    max-width: 40rem;
+    padding: 1rem 1rem 0rem 1rem;
+    & .btn {
+      display: block;
+      margin-top: 30px;
+    }
+    & .registerBtn {
+      position: relative !important;
+    }
+  }
+  .content {
+    font-size: 15px;
+  }
+  .actions {
+    text-align: center;
+  }
+  .form {
+    margin-top: 20rem;
+  }
+}

@@ -1,0 +1,94 @@
+// main colors
+$danger-color: #e63946;
+$warning-color: #f77f00;
+$primary-color: #f4a261;
+// compleate colors
+$secondary-color: #e9c46a;
+$info-color: #2a9d8f;
+$dark-color: #8d6e63;
+// blur colors
+$blur-dark-color: rgba(255, 255, 255, 0.2);
+$blur-light-color: rgba(255, 255, 255, 0.5);
+//text colors
+$text-color: #2c3e50;
+$light-color: #ccc;
+// font sizes
+$high-font: 20px;
+$mid-font: 17px;
+$low-font: 14px;
+// radius
+$high-radius: 16px;
+$mid-radius: 12px;
+$low-radius: 5px;
+// view port size
+$size-Tv: 1200px;
+$size-laptop: 992px;
+$size-tablet: 768px;
+$size-mobile: 576px;
+
+// method
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+@mixin timer {
+  transition: all 300ms ease-in-out;
+}
+@mixin modal {
+  position: fixed;
+  top: 5vh;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  max-height: 80vh;
+  margin: auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 1px 5px 5px rgba(209, 207, 207, 0.25);
+  border: 1px solid white;
+  margin-top: 3%;
+  z-index: 100;
+  transition: all 0.3s linear;
+  animation: modalAnim 0.2s linear;
+  overflow: auto;
+}
+@mixin valid-modal {
+  background: linear-gradient(
+    90deg,
+    $blur-dark-color 0%,
+    $dark-color 100%
+  );
+}
+@mixin inValid-modal {
+  background-color: $light-color;
+}
+@keyframes modalAnim {
+  from {
+    top: 0vh;
+  }
+  to {
+    top: 5vh;
+  }
+}
+// funciton
+@function increase-color($color, $amount: 100%) {
+  $inverse: change-color($color, $hue: hue($color) + 30);
+  @return mix($inverse, $color, $amount);
+}
+@function decrease-color($color, $amount: 100%) {
+  $inverse: change-color($color, $hue: hue($color) - 30);
+  @return mix($inverse, $color, $amount);
+}

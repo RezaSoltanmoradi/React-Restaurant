@@ -1,0 +1,144 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  max-height: 6.5rem;
+  min-height: 4rem;
+  background-color: $text-color;
+  @include flex-center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & h1 {
+      background: linear-gradient(90deg, #e63946, #f4a261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      margin: 0;
+      font-size: 25px;
+      margin: 0 10px;
+    }
+    .icon {
+      display: flex; /* برای مرکز کردن محتوا */
+      align-items: center;
+      justify-content: center;
+      width: 45px; /* عرض و ارتفاع مساوی برای دایره */
+      height: 45px;
+      font-size: 22px;
+      color: $secondary-color;
+      border: 1px solid $secondary-color;
+      border-radius: 50%; /* دایره شدن */
+      padding: 0; /* حذف padding که باعث تغییر اندازه می‌شود */
+    }
+  }
+}
+
+.main-image {
+  width: 100%;
+  height: 25rem;
+  z-index: 0;
+  overflow: hidden;
+  & img {
+    width: 110%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(100% 0, 100% 80%, 0 100%, 0 100%, 0 0%, 0 0%);
+  }
+}
+.Nav {
+  span {
+    font-size: $high-font;
+    color: $secondary-color;
+  }
+}
+.link,
+.ActiveLink,
+.exitButton {
+  list-style: none;
+  text-decoration: none;
+  display: inline;
+  font-size: $high-font;
+  padding: 0 5px;
+  transition: all 0.2s linear;
+  color: $secondary-color;
+}
+.link {
+  &:hover {
+    color: increase-color($light-color);
+    color: $primary-color;
+  }
+}
+.ActiveLink {
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+}
+.exitButton {
+  color: $secondary-color;
+  &:hover {
+    color: $danger-color;
+  }
+}
+
+.entired {
+  display: inline-block;
+  font-size: $high-font;
+  background: linear-gradient(90deg, #f4a261, #e63946);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media screen and (max-width: 992px) {
+  .entired,
+  .link,
+  .ActiveLink {
+    font-size: 17px;
+  }
+  .header {
+    .title {
+      & h1 {
+        margin: 0;
+        font-size: 20px;
+        margin: 0 5px;
+      }
+      .icon {
+        width: 40px; /* عرض و ارتفاع مساوی برای دایره */
+        height: 40px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .entired,
+  .link,
+  .ActiveLink {
+    font-size: 15px;
+  }
+  .entired {
+    width: 60px;
+    text-overflow: ellipsis;
+    text-align: justify;
+  }
+  .exitButton {
+    font-size: 16px;
+  }
+  .header {
+    .title {
+      & h1 {
+        font-size: 17px;
+        margin: 0 7px;
+        padding: 0;
+      }
+      .icon {
+        width: 25px; /* عرض و ارتفاع مساوی برای دایره */
+        height: 25px;
+        font-size: 14px;
+      }
+    }
+  }
+}

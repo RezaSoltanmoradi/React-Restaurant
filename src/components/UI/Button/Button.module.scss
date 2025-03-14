@@ -1,0 +1,36 @@
+@import "../MainStyle/MainStyle.scss";
+.button {
+  @include flex-center;
+  background-color: $text-color;
+  padding: 0.5rem 1.5rem;
+  color: $secondary-color;
+  font-size: $high-font;
+  border-radius: $low-radius;
+  border: none;
+  font-family: sahel;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  margin: 0 1rem;
+  @include timer;
+  &:hover,
+  &:active {
+    opacity: 1;
+    background-color: increase-color($text-color, 100%);
+  }
+}
+@media screen and (max-width: $size-laptop) {
+  .button {
+    margin: 0 0.7rem;
+    padding: 0.4rem 1.2rem;
+    font-size: $mid-font;
+  }
+}
+@media screen and (max-width: $size-tablet) {
+  .button {
+    margin: 0 0.5rem;
+    padding:.5rem 0;
+    width: 100px;
+    font-size: $low-font;
+  }
+}

@@ -1,0 +1,56 @@
+@import "../MainStyle/MainStyle.scss";
+.input {
+  @include flex-center;
+  direction: rtl;
+  & label {
+    font-weight: bold;
+    margin-left: 0.5rem;
+    font-size: $mid-font;
+    color: $danger-color;
+  }
+  & input {
+    background: $secondary-color;
+    color: $danger-color;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid $danger-color;
+    font: inherit;
+    padding: 0.2rem 0;
+    font-size: $mid-font;
+    font-weight: 600;
+    &:focus{
+        outline: none;
+        transition: all .2s linear;
+        background-color: $danger-color;
+        color: $secondary-color;
+    }
+  }
+}
+/* برای WebKit (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* برای Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+@media screen and (max-width: 768px) {
+  .input {
+    margin: 0.5rem;
+    & label {
+      font-size: $low-font;
+    }
+    & input {
+      width: 40px;
+      border-radius: 5px;
+      border: 2px solid $dark-color;
+      font: inherit;
+      padding: 0.1rem;
+      font-size: $mid-font;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,124 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.cart-item {
+  padding: 1rem 1rem 0.5rem;
+  margin: 1rem;
+  background: linear-gradient(
+    90deg,
+    $light-color 0%,
+    $blur-dark-color 100%
+  );
+  border-radius: $low-radius;
+}
+.name {
+  color: $text-color;
+  text-align: end;
+  font-size: 20px;
+  font-weight: bold;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0 0.5rem;
+  display: flex;
+  & .summary {
+    color: $text-color;
+    text-align: end;
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    & .price {
+      padding: 0;
+      margin: 0 1rem;
+      font-size: $high-font;
+      border-radius: $low-radius;
+    }
+    & .amount {
+      height: 100%;
+      padding: 5px 10px;
+      font-weight: bold;
+      color: $danger-color;
+      font-size: $high-font;
+      border-bottom: 2px solid $danger-color;
+      display: flex;
+      align-items: center;
+    }
+  }
+  & .actions {
+    text-align: center;
+    height: 40px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: $size-laptop) {
+  .name {
+    font-size: $mid-font;
+  }
+  .container {
+    & .summary {
+      & .price {
+        font-size: $mid-font;
+      }
+      & .amount {
+        font-size: $mid-font;
+      }
+    }
+  }
+}
+@media screen and (max-width: $size-tablet) {
+  .name{
+    font-size: 16px;
+  }
+  .cart-item {
+    padding: 1rem 10px 1rem 0;
+    margin: 1rem 10px 1rem 0;
+  }
+  .container {
+    margin: 1rem 0 0;
+
+    & .summary {
+      & .price {
+        font-size: $mid-font;
+      }
+      & .amount {
+        font-size: $mid-font;
+      }
+    }
+  }
+}
+@media screen and (max-width: $size-mobile) {
+    .cart-item{
+        padding-bottom: .4rem;
+    }
+  .container {
+    & .summary {
+      width: 60%;
+      margin-right: 10px;
+      & .price {
+        font-size: $low-font;
+        margin: 0;
+        padding: 0;
+      }
+      & .amount {
+        padding: 5px;
+        font-size: $low-font;
+        border: none;
+        padding: 0;
+        &::after {
+          content: " _ ";
+          margin: 0 5px;
+          color: $text-color;
+        }
+      }
+    }
+    & .actions {
+      height: 30px;
+    width: 45%;
+
+    }
+  }
+}

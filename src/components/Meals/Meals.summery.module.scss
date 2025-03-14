@@ -1,0 +1,39 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.summary {
+  text-align: center;
+  max-width: 45rem;
+  width: 90%;
+  margin: auto;
+  margin-top: -10rem;
+  position: relative;
+  background-color: $secondary-color;
+  border-radius: $mid-radius;
+  padding: 1rem;
+  box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+  ::selection {
+    background-color: $info-color;
+    color: $light-color;
+  }
+  & h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    font-family: sultan;
+    font-weight: bold;
+    color: $info-color;
+  }
+  & p {
+    color: $text-color;
+    font-size: $mid-font;
+  }
+}
+@media screen and (max-width: 576px) {
+  .summary {
+    & h2 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+    & p {
+      font-size: 13px;
+    }
+  }
+}

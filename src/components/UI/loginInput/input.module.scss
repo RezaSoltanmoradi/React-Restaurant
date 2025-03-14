@@ -1,0 +1,81 @@
+@import "../MainStyle/MainStyle.scss";
+.login {
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.control {
+  align-items: stretch;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  direction: rtl;
+}
+
+.control label,
+.control input {
+  display: block;
+}
+
+.control label {
+  font-size: $low-font;
+  flex: 1;
+  color: $text-color;
+}
+
+.control input {
+  text-align: start;
+  flex: 3;
+  font: inherit;
+  direction: ltr;
+  font-size: 13px;
+  padding: 0.35rem 0.35rem;
+  background: linear-gradient(45deg, $light-color, #fffdfb);
+  border: none;
+}
+
+.control input:focus {
+  outline: none;
+  background: linear-gradient(45deg, $light-color, #fffdfb);
+}
+
+.control.invalid input {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 100, 100, 0.2) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  outline: none;
+}
+.control.invalid label::before {
+  content: " * ";
+  color: $danger-color;
+}
+.content {
+  color: $danger-color;
+  font-size: 12px;
+  height: auto;
+  display: block;
+  height: auto;
+  min-height: 1.3rem;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .control {
+    align-items: center;
+    flex-direction: row;
+    & label {
+      font-size: 18px;
+    }
+    & input {
+      font-size: 16px;
+    }
+  }
+  .content {
+    font-size: 14px;
+    min-height: 1.9rem;
+  }
+}

@@ -1,0 +1,83 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.form {
+  direction: rtl;
+  margin: 1rem 0 0;
+  height: 17rem;
+  & .control {
+    @include flex-between;
+    margin: 10px 50px;
+    & input {
+      width: 70%;
+      font-weight: 700;
+      border: none;
+      padding: 0.3rem;
+      font-size: $mid-font;
+      background: linear-gradient(45deg, #fffdfb, $light-color);
+      color: $text-color;
+      outline: none;
+    }
+    ::placeholder {
+      color: $text-color;
+      opacity: 0.5;
+    }
+    & label {
+      color: $text-color;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+      display: block;
+      font-size: $mid-font;
+    }
+  }
+  & .inValid {
+    & input {
+      background: linear-gradient(90deg, $blur-light-color 0%, #fd8892 100%);
+      outline: none;
+      color: $text-color;
+    }
+    ::placeholder {
+      color: white;
+      opacity: 0.7;
+    }
+    & label {
+      border-bottom: 2px solid #ff6b78;
+    }
+    & label::before {
+      content: " * ";
+      color: #ff6b78;
+      font-weight: bold;
+    }
+  }
+}
+@media screen and (max-width: $size-laptop) {
+  .form {
+    & .control {
+      margin: 10px 10px;
+    }
+    & .inValid {
+      & label {
+        border: none;
+      }
+    }
+  }
+}
+@media screen and (max-width: $size-tablet) {
+  .form {
+    & .control {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      & input {
+        width: 100%;
+        font-size: 12px;
+      }
+      & label {
+        color: 15px;
+        font-weight: bold;
+        text-align: end;
+        margin-bottom: 0.25rem;
+        display: block;
+        font-size: $low-font;
+      }
+    }
+  }
+}

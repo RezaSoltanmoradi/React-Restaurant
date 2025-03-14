@@ -1,0 +1,111 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: $secondary-color;
+  color: $text-color;
+  padding: 0.65rem 2.5rem;
+  @include flex-center; 
+  border-radius: $mid-radius;
+  font-weight: 900;
+  &:hover,
+  &:active {
+    transition: all 0.2s linear;
+    background-color: $primary-color;
+  }
+}
+.bump {
+  animation: bump 300ms ease-out;
+}
+@keyframes bump {
+  0% {
+    transform: scale(0.9);
+  }
+  10% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+    background-color: decrease-color($secondary-color, 30%);
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: decrease-color($secondary-color, 50%);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.icon {
+  width: 1.35rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  font-size: 25px;
+  transform: rotateY(180deg);
+  color: $danger-color;
+}
+.badge {
+  background-color: $danger-color;
+  padding: 0.25rem 1rem;
+  border-radius: 25px;
+  margin-right: 1rem;
+  font-weight: bold;
+  color: $light-color;
+  display: flex;
+  align-items: center;
+}
+.validBadge {
+  background-color: $info-color;
+  padding: 0.25rem 1rem;
+  border-radius: 25px;
+  margin-right: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.cart {
+  color: $text-color;
+  width: 70px;
+  font-size: $mid-font;
+}
+@media screen and (max-width: 992px) {
+  .button {
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .icon {
+    font-size: 20px;
+    width: 1rem;
+    height: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  .badge,
+  .validBadge {
+    padding: 0.15rem 0.7rem;
+    margin-right: 1rem;
+  }
+}
+@media screen and (max-width: 578px) {
+  .icon {
+    font-size: 20px;
+    height: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  .cart {
+    font-size: 15px;
+  }
+  .badge,
+  .validBadge {
+    font-size: 15px;
+    padding: 0.2rem 0.7rem;
+    margin: 0;
+  }
+  h1 {
+    justify-content: center;
+  }
+  .button {
+    padding: 0.4rem 0.4rem;
+  }
+}

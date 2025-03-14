@@ -1,0 +1,35 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.meals {
+  width: 70%;
+  margin: 1rem auto;
+  padding: 3rem 1rem;
+  text-align: end;
+  position: relative;
+  animation: bump 0.2s ease;
+  background-color: $text-color;
+  margin-top: 1rem;
+  ::selection {
+    background-color: $info-color;
+    color: $light-color;
+  }
+  & ul {
+    list-style: none;
+  }
+}
+@keyframes bump {
+  0% {
+    margin-top: 3rem;
+  }
+  100% {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 578px) {
+  .meals {
+    ul {
+      padding: 0;
+    }
+    width: 90%;
+  }
+}

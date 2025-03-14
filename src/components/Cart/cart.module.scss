@@ -1,0 +1,72 @@
+@import "../UI/MainStyle/MainStyle.scss";
+.cart-item {
+  list-style: none;
+  margin: 0;
+  padding: 0%;
+  max-height: 20rem;
+  overflow: auto;
+  border-radius: $low-radius;
+}
+.succesed {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+  text-align: end;
+}
+.total {
+  @include flex-between;
+  font-size: $high-font;
+  margin: 20px 2rem 0px;
+  color: black;
+  padding-top: 20px;
+  & .borderCenter {
+    width: 70%;
+    border: 1.2px solid black;
+    height: 1px;
+  }
+  & .totalAmount {
+    font-size: $high-font;
+
+    border: none;
+  }
+  & span {
+    font-weight: bold;
+    font-size: $high-font;
+  }
+}
+.actions {
+  display: flex;
+  justify-content: start;
+  margin-top: 2rem;
+}
+.button {
+  margin-top: 2rem;
+}
+@media screen and (max-width: $size-tablet) {
+  .total {
+    font-size: $mid-font;
+    margin: 0px;
+    & .borderCenter {
+      width: 50%;
+      height: 1px;
+    }
+    & .totalAmount {
+      font-size: $low-font;
+      border: none;
+    }
+    & span {
+      font-size: $low-font;
+    }
+  }
+  .succesed {
+    font-size: 15px;
+  }
+  .actions {
+    justify-content: flex-start;
+  }
+  .button,
+  .button-alt {
+    font-size: 17px;
+  }
+}

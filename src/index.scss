@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+@import "./components/UI/MainStyle/MainStyle.scss";
+* {
+  box-sizing: border-box;
+  font-family: mikhak !important;
+}
+
+html {
+  font-family: "Noto Sans JP", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: $text-color;
+}
+/* استایل کلی اسکرول‌بار */
+::-webkit-scrollbar {
+  width: 8px; /* عرض اسکرول */
+  height: 8px;
+}
+
+/* استایل پس‌زمینه مسیر اسکرول‌بار */
+::-webkit-scrollbar-track {
+  background-color: $blur-light-color; /* رنگ پس‌زمینه مسیر */
+  border-radius: 0px;
+  width: 50px;
+  border: none;
+}
+
+/* استایل بخش متحرک (دسته اسکرول) */
+::-webkit-scrollbar-thumb {
+  background-color: #ff6b78;
+  border-radius: 10px;
+  border: 1px solid $secondary-color; /* مرز برای بهتر دیده‌شدن دسته */
+}
+
+@font-face {
+  font-family: sultan;
+  src: url(./assets/fonts/sultanadan/sultan-adan2.ttf);
+}
+@font-face {
+  font-family: Mikhak;
+  src: url(./assets/fonts/Mikhak-Medium.ttf);
+}
