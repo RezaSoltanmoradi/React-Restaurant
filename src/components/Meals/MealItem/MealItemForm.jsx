@@ -1,10 +1,9 @@
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import Input from "../../UI/Input/Input";
 import Button from "../../UI/Button/Button";
 
 const MealItemForm = ({ onAddToCart, id }) => {
   const amountInputRef = useRef(null);
-
   // تابع اعتبارسنجی مقدار ورودی
   const validateAmount = (value) => {
     const enteredAmountNumber = +value;
@@ -57,4 +56,4 @@ const MealItemForm = ({ onAddToCart, id }) => {
   );
 };
 
-export default MealItemForm;
+export default memo(MealItemForm);

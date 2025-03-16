@@ -108,9 +108,9 @@ const CartContextProvider = ({ children }) => {
     },
     [updateAllUsers, updateUserData, userData]
   );
-  const showCardHandler = () => {
+  const showCardHandler = useCallback(() => {
     setCardIsShown(true);
-  };
+  }, []);
   const hideCardShown = useCallback(() => {
     setCardIsShown(false);
   }, []);
@@ -127,6 +127,7 @@ const CartContextProvider = ({ children }) => {
     removeItemFromCartHandler,
     cardIsShown,
     hideCardShown,
+    showCardHandler,
   ]);
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>

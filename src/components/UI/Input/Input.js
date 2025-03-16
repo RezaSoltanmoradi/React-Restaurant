@@ -1,5 +1,5 @@
 import styles from "./input.module.scss";
-import React, { forwardRef } from "react";
+import React, { forwardRef, memo } from "react";
 
 const Input = forwardRef((props, ref) => {
   const { label, input } = props;
@@ -10,4 +10,4 @@ const Input = forwardRef((props, ref) => {
     </div>
   );
 });
-export default Input;
+export default memo(Input);

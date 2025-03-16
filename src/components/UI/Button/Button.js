@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./Button.module.scss";
 const Button = ({ className, onClick, children, disabled, type }) => {
   return (
@@ -11,4 +12,4 @@ const Button = ({ className, onClick, children, disabled, type }) => {
     </button>
   );
 };
-export default Button;
+export default memo(Button);

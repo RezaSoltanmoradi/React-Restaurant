@@ -1,5 +1,6 @@
 import React, {
   Fragment,
+  memo,
   useCallback,
   useContext,
   useEffect,
@@ -17,18 +18,18 @@ const Cart = () => {
   const [isCheckOut, setIsCheckout] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
-  const { hideCardItems, showCardItems } = useContext(CartContext);
+  const { hideCardItems, cardIsShown } = useContext(CartContext);
   const { userData, clearCheckout } = useContext(AuthContext);
-  const { items, totalAmount } = userData?.checkout;
+  const { items, totalAmount } = userData.checkout;
   const totalAmountFixed = ` ${totalAmount?.toFixed(2) ?? 0} تومان`;
   const hasItems = items?.length > 0;
   const orderHandler = useCallback(() => {
     setIsCheckout(true);
   }, []);
-  
   useEffect(() => {
     setIsCheckout(false);
-  }, [showCardItems]);
+    setDidSubmit(false);
+  }, [cardIsShown]);
   const cartItems = (
     <ul className={styles["cart-item"]}>
       {items?.map((item) => (
@@ -72,7 +73,7 @@ const Cart = () => {
   const cartModalContent = (
     <Fragment>
       {cartItems}
-     
+
       <div className={styles.total}>
         <span style={{ direction: "rtl" }}>{totalAmountFixed}</span>
         <div className={styles.borderCenter}></div>
@@ -89,6 +90,7 @@ const Cart = () => {
       )}
     </Fragment>
   );
+
   const didSubmitModadalContent = (
     <div>
       <p className={styles.succesed}>😍 سفارش شما با موفقیت ثبت شد </p>
@@ -116,4 +118,4 @@ const Cart = () => {
     </Modal>
   );
 };
-export default Cart;
+export default memo(Cart);

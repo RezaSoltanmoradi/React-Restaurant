@@ -24,7 +24,6 @@ const Auth = React.memo(() => {
   const [formSubmit, setFormSubmit] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
   const { authId } = useParams();
   const userNameRef = useRef();
@@ -75,6 +74,7 @@ const Auth = React.memo(() => {
     event.preventDefault();
     setFormSubmit(true);
     setError(null);
+
     if (formValidtation) {
       if (isLogin) {
         try {
@@ -84,7 +84,10 @@ const Auth = React.memo(() => {
           setFormSubmit(false);
         } catch (error) {
           showCardItems();
-          setError(error.message);
+          setError((prevError) => {
+            if (prevError === error.message) return prevError;
+            return error.message;
+          });
         }
       } else {
         try {
@@ -96,7 +99,10 @@ const Auth = React.memo(() => {
           navigate(allRoutes.loginRoute());
         } catch (error) {
           showCardItems();
-          setError(error.message);
+          setError((prevError) => {
+            if (prevError === error.message) return prevError;
+            return error.message;
+          });
         }
       }
     }

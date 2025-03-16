@@ -18,7 +18,7 @@ const Input = forwardRef(
         USERNAME: "Username must be at least 4 characters long.",
         EMAIL: "Email must include '@gmail.com'.",
         PASSWORD:
-         "Password must be at least 8 characters and include uppercase, lowercase, and a number.",
+          "Password must be at least 8 characters and include uppercase, lowercase, and a number.",
       };
       return labelObj[id?.toUpperCase()] || "";
     };
@@ -31,7 +31,9 @@ const Input = forwardRef(
             isValid === false ? classes.invalid : ""
           }`}
         >
-          <label className="pb-1 pb-md-0" htmlFor={id}>{label}:</label>
+          <label className="pb-1 pb-md-0" htmlFor={id}>
+            {label}:
+          </label>
           <input ref={inputRef} id={id} {...props} autoComplete={id} />
         </div>
         <p className={classes.content}>{!isValid && message}</p>

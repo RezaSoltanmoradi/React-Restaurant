@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
 import { CartContext } from "../../../context/CartContext";
@@ -9,8 +9,9 @@ const Backdrop = ({ onClose }) => {
 };
 
 const ModalOverlays = ({ children, width, loading }) => {
+
   const { userData } = useContext(AuthContext);
-  const { items } = userData?.checkout;
+  const { items } = userData.checkout;
   const modalStyle =
     items?.length > 0 && !loading ? styles.validModal : styles.inValidModal;
   return (
@@ -40,4 +41,4 @@ const Modal = ({ children, width, loading }) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);

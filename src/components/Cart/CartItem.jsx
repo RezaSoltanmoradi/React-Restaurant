@@ -1,14 +1,14 @@
 import styles from "./CartItem.module.scss";
 import { Fragment } from "react/cjs/react.production.min";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import Button from "../UI/Button/Button";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 const CartItem = (props) => {
   const price = ` ${props.price.toFixed(2)} تومان`;
   const { removeItem, addItem } = useContext(CartContext);
-  const {isLoggedIn, userData}= useContext(AuthContext);
-  const {items}= userData?.checkout;
+  const { isLoggedIn, userData } = useContext(AuthContext);
+  const { items } = userData.checkout;
   const removeHandler = () => {
     if (items && isLoggedIn) {
       removeItem(props.id);
@@ -44,4 +44,4 @@ const CartItem = (props) => {
     </Fragment>
   );
 };
-export default CartItem;
+export default memo(CartItem);

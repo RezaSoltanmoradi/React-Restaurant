@@ -58,7 +58,7 @@ const AuthContextProvider = ({ children }) => {
           return updatedLoggedin;
         });
       } else {
-        throw new Error("!هیچ کاربری با این ایمیل و رمز عبور پیدا نشد ❗");
+        throw new Error("هیچ کاربری با این ایمیل و رمز عبور پیدا نشد ❗");
       }
     },
     [isFindItem, users]
@@ -84,7 +84,7 @@ const AuthContextProvider = ({ children }) => {
           return updatedUsers;
         });
       } else {
-        throw new Error("!کاربری قبلا با این ایمیل ثبت نام کرده ❗");
+        throw new Error("کاربری قبلا با این ایمیل ثبت نام کرده ❗");
       }
     },
     [isFindItem]

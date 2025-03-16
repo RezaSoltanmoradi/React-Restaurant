@@ -57,9 +57,16 @@ const useInput = (validInputValue) => {
       hasError,
       valueChangeHandler,
       inputBlurHandler,
-      resetValue:resetHanlder,
+      resetValue: resetHanlder,
     }),
-    [inputState, valueIsValid, hasError, resetHanlder]
+    [
+      inputState,
+      valueIsValid,
+      hasError,
+      resetHanlder,
+      inputBlurHandler,
+      valueChangeHandler,
+    ]
   );
 
   return value;

@@ -1,9 +1,9 @@
-import { Fragment, useContext } from "react";
+import { Fragment, memo, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import allRoutes from "../../helper/allRoutes";
 import styles from "./Header.module.scss";
 import HeaderCardButton from "./HeaderCardButton";
-import { IoRestaurant } from "react-icons/io5";
+import { GrRestaurant } from "react-icons/gr";
 import { Outlet } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
@@ -15,7 +15,11 @@ const Header = () => {
     <Fragment>
       <header className={styles.header}>
         <div className="col-12 row text-center mx-auto m-0 p-0 h-100">
-          <div className={`${!isLoggedIn ?"col-5" : "col-6"} col-md-4 h-100 d-flex align-items-center justify-content-center`}>
+          <div
+            className={`${
+              !isLoggedIn ? "col-5" : "col-6"
+            } col-md-4 h-100 d-flex align-items-center justify-content-center`}
+          >
             {!isLoggedIn && (
               <nav className={styles.Nav}>
                 <NavLink
@@ -69,9 +73,9 @@ const Header = () => {
               }`}
             >
               <div className={styles.title}>
-                <h1 className="text-center "> فروشگاه غذاهای ایرانی</h1>
+                <h1 className="text-center ">ایرانی فود</h1>
                 <span className={styles.icon}>
-                  <IoRestaurant />
+                  <GrRestaurant />
                 </span>
               </div>
             </div>
@@ -87,4 +91,4 @@ const Header = () => {
     </Fragment>
   );
 };
-export default Header;
+export default memo(Header);

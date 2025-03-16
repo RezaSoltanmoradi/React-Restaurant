@@ -1,14 +1,15 @@
 .mainAuth {
   width: 100%;
-  height: 100vh;
+  min-height: 85vh;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.2) !important;
+  position: relative;
 }
 .login {
   width: 90%;
   max-width: 40rem;
   left: 50%;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%);
   padding: 2rem;
   padding: 2rem 2rem 0 2rem;
@@ -33,10 +34,11 @@
 }
 .content {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   font-size: 18px;
-  text-align: end;
+  text-align: start;
+  direction: rtl;
 }
 .actions {
   display: flex;
@@ -45,6 +47,9 @@
 }
 
 @media screen and (max-width: 576px) {
+  .mainAuth {
+    min-height: 70vh;
+  }
   .login {
     width: 80%;
     max-width: 40rem;

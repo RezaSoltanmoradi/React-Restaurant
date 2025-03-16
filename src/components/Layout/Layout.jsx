@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import Header from "./Header";
 import { CartContext } from "../../context/CartContext";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   const { cardIsShown } = useContext(CartContext);
+
   return (
     <div
       style={{
@@ -13,8 +15,9 @@ const Layout = ({ children }) => {
     >
       <Header />
       <main>{children}</main>
+      <Footer />
     </div>
   );
 };
 
-export default Layout;
+export default memo(Layout);
