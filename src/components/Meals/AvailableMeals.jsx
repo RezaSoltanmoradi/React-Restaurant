@@ -17,6 +17,7 @@ const AvailableMeals = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isLoggedIn } = useContext(AuthContext);
   const { addItem } = useContext(CartContext);
+  
   const addToCartHandler = useCallback(({ amount, id, price, name }) => {
     if (!isLoggedIn) return;
     addItem({ productId: id, name, amount, price });

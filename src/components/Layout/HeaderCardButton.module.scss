@@ -27,11 +27,11 @@
   }
   30% {
     transform: scale(1.1);
-    background-color: decrease-color($secondary-color, 30%);
+    background-color: $primary-color;
   }
   50% {
     transform: scale(1.1);
-    background-color: decrease-color($secondary-color, 50%);
+    background-color: $primary-color;
   }
   100% {
     transform: scale(1);

@@ -10,7 +10,7 @@ import { CartContext } from "../../context/CartContext";
 import { MdOutlineExitToApp } from "react-icons/md";
 const Header = () => {
   const { userData, isLoggedIn, onLogout } = useContext(AuthContext);
-  const { showCardItems } = useContext(CartContext);
+  const { showModal: showCartModal } = useContext(CartContext);
   return (
     <Fragment>
       <header className={styles.header}>
@@ -81,7 +81,7 @@ const Header = () => {
             </div>
             {isLoggedIn && (
               <div className="col-12 col-md-4 col-lg-3 offset-lg-1 d-flex justify-content-center">
-                <HeaderCardButton onClick={showCardItems} />
+                <HeaderCardButton onClick={showCartModal} />
               </div>
             )}
           </div>

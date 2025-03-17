@@ -33,14 +33,14 @@ const AuthContextProvider = ({ children }) => {
   const [users, setUsers] = useState(defaultUsers);
   const [userData, setUserData] = useState(defaultUserData);
 
-  const isFindItem = useMemo(
+  const isMatchItem = useMemo(
     () => (key, value) => users.some((user) => user[key] === value),
     [users]
   );
   const loginHandler = useCallback(
     ({ email, password }) => {
-      const foundEmail = isFindItem("email", email);
-      const foundpassword = isFindItem("password", password);
+      const foundEmail = isMatchItem("email", email);
+      const foundpassword = isMatchItem("password", password);
       if (foundEmail && foundpassword) {
         const foundUser = users.find(
           (user) => user.email === email && user.password === password
@@ -49,7 +49,6 @@ const AuthContextProvider = ({ children }) => {
           if (!foundUser) return prev;
           const updatedUserData = { ...prev, ...foundUser };
           localStorage.setItem("userData", JSON.stringify(updatedUserData));
-
           return updatedUserData;
         });
         setIsLoggedIn(() => {
@@ -61,7 +60,7 @@ const AuthContextProvider = ({ children }) => {
         throw new Error("هیچ کاربری با این ایمیل و رمز عبور پیدا نشد ❗");
       }
     },
-    [isFindItem, users]
+    [isMatchItem, users]
   );
   const registerHander = useCallback(
     ({ userName, password, email }) => {
@@ -74,7 +73,7 @@ const AuthContextProvider = ({ children }) => {
           totalAmount: 0,
         },
       };
-      const foundEmail = isFindItem("email", email);
+      const foundEmail = isMatchItem("email", email);
 
       if (!foundEmail) {
         setUsers((prevUsers) => {
@@ -87,12 +86,12 @@ const AuthContextProvider = ({ children }) => {
         throw new Error("کاربری قبلا با این ایمیل ثبت نام کرده ❗");
       }
     },
-    [isFindItem]
+    [isMatchItem]
   );
 
   const updateAllUsers = useCallback(
     ({ checkout, email }) => {
-      const foundEamil = isFindItem("email", email);
+      const foundEamil = isMatchItem("email", email);
       if (foundEamil) {
         setUsers((prevUsers) => {
           return prevUsers?.map((user) => {
@@ -101,7 +100,7 @@ const AuthContextProvider = ({ children }) => {
         });
       }
     },
-    [isFindItem]
+    [isMatchItem]
   );
   const updateUserData = useCallback(({ checkout }) => {
     setUserData((prevUser) => {

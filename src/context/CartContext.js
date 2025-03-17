@@ -12,15 +12,15 @@ import { AuthContext } from "./AuthContext";
 export const CartContext = createContext({
   addItem: () => {},
   removeItem: () => {},
-  showCardItems: () => {},
-  hideCardItems: () => {},
-  cardIsShown: false,
+  showModal: () => {},
+  hideModal: () => {},
+  modalIsShown: false,
 });
 
 const types = {
   addItem: "ADD_ITEM",
   removeItem: "REMOVE_ITEM",
-  clearCart: "CLEAR_CART",
+  defaultItem: "DEFAULT_ITEM",
 };
 
 const CartReducer = (
@@ -56,7 +56,7 @@ const CartReducer = (
       }, []);
       break;
     }
-    case types.clearCart: {
+    case types.defaultItem: {
       return action.newState;
     }
     default:
@@ -69,21 +69,18 @@ const CartReducer = (
 };
 
 const CartContextProvider = ({ children }) => {
-  const [cardIsShown, setCardIsShown] = useState(false);
+  const [modalIsShown, setModalIsShown] = useState(false);
   const { updateAllUsers, updateUserData, userData } = useContext(AuthContext);
 
-  const [cartState, dispatchCartAction] = useReducer(
-    CartReducer,
-    userData.checkout
-  );
+  const [, dispatchCartAction] = useReducer(CartReducer, userData.checkout);
   useEffect(() => {
     dispatchCartAction({
-      type: types.clearCart,
+      type: types.defaultItem,
       newState: userData.checkout,
     });
   }, [userData.checkout]);
 
-  const addItemtoCartHandler = useCallback(
+  const addItemToCart = useCallback(
     (item) => {
       dispatchCartAction({
         type: types.addItem,
@@ -96,7 +93,7 @@ const CartContextProvider = ({ children }) => {
     [updateAllUsers, updateUserData, userData]
   );
 
-  const removeItemFromCartHandler = useCallback(
+  const removeItemFromCart = useCallback(
     (id) => {
       dispatchCartAction({
         type: types.removeItem,
@@ -108,26 +105,26 @@ const CartContextProvider = ({ children }) => {
     },
     [updateAllUsers, updateUserData, userData]
   );
-  const showCardHandler = useCallback(() => {
-    setCardIsShown(true);
+  const showModalHandler = useCallback(() => {
+    setModalIsShown(true);
   }, []);
-  const hideCardShown = useCallback(() => {
-    setCardIsShown(false);
+  const hideModalHandler = useCallback(() => {
+    setModalIsShown(false);
   }, []);
   const contextValue = useMemo(() => {
     return {
-      addItem: addItemtoCartHandler,
-      removeItem: removeItemFromCartHandler,
-      showCardItems: showCardHandler,
-      hideCardItems: hideCardShown,
-      cardIsShown,
+      addItem: addItemToCart,
+      removeItem: removeItemFromCart,
+      showModal: showModalHandler,
+      hideModal: hideModalHandler,
+      modalIsShown,
     };
   }, [
-    addItemtoCartHandler,
-    removeItemFromCartHandler,
-    cardIsShown,
-    hideCardShown,
-    showCardHandler,
+    addItemToCart,
+    removeItemFromCart,
+    modalIsShown,
+    hideModalHandler,
+    showModalHandler,
   ]);
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>

@@ -3,34 +3,32 @@ import { TiShoppingCart } from "react-icons/ti";
 import { memo, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 const HeaderCardButton = ({ onClick }) => {
-  
-  const [btnIsHighlighted, setBtnIsHighlighted] = useState(true);
+  const [btnGrowUp, setBtnGrowUp] = useState(true);
   const { userData } = useContext(AuthContext);
   const { items } = userData.checkout;
-  const numberOfCartItems =
-    items?.reduce((curNamber, item) => {
-      return curNamber + item.amount;
+  const calcAllItems =
+    items?.reduce((collectNumber, currentNumber) => {
+      return collectNumber + currentNumber.amount;
     }, 0) ?? 0;
-
   useEffect(() => {
     if (items?.length === 0) {
-      setBtnIsHighlighted(false);
+      setBtnGrowUp(false);
     }
-    setBtnIsHighlighted(true);
+    setBtnGrowUp(true);
     const timer = setTimeout(() => {
-      setBtnIsHighlighted(false);
+      setBtnGrowUp(false);
     }, 300);
     return () => {
       clearTimeout(timer);
     };
   }, [items]);
-  const btnStyles = `${styles.button} ${btnIsHighlighted ? styles.bump : " "}`;
+  const btnStyles = `${styles.button} ${btnGrowUp ? styles.bump : " "}`;
   return (
     <button className={btnStyles} onClick={onClick}>
       <span
-        className={numberOfCartItems > 0 ? styles.validBadge : styles.badge}
+        className={calcAllItems > 0 ? styles.validBadge : styles.badge}
       >
-        {numberOfCartItems}{" "}
+        {calcAllItems}{" "}
       </span>
       <span className={styles.cart}>سبد خرید</span>
       <span className={styles.icon}>

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../../components/UI/Card/card";
-import Input from "../../components/UI/loginInput/input";
+import Input from "../../components/UI/AuthInput/input";
 import styles from "./Auth.module.scss";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
@@ -19,16 +19,14 @@ const validText = (value) => value.trim().length > 3;
 const isValidEmail = (value) => value.includes("@") && value.trim().length > 4;
 
 const Auth = React.memo(() => {
-  const { hideCardItems, showCardItems } = useContext(CartContext);
+  const { hideModal, showModal } = useContext(CartContext);
   const { onLogin, onRegister } = useContext(AuthContext);
   const [formSubmit, setFormSubmit] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
   const { authId } = useParams();
-  const userNameRef = useRef();
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
 
   const {
     value: userName,
@@ -83,7 +81,7 @@ const Auth = React.memo(() => {
           resetPassword();
           setFormSubmit(false);
         } catch (error) {
-          showCardItems();
+          showModal();
           setError((prevError) => {
             if (prevError === error.message) return prevError;
             return error.message;
@@ -98,7 +96,7 @@ const Auth = React.memo(() => {
           setFormSubmit(false);
           navigate(allRoutes.loginRoute());
         } catch (error) {
-          showCardItems();
+          showModal();
           setError((prevError) => {
             if (prevError === error.message) return prevError;
             return error.message;
@@ -110,14 +108,13 @@ const Auth = React.memo(() => {
   const cardStyle = `${styles.login} ${
     isLogin ? styles.loginSize : styles.RegisterSize
   }`;
-
   return (
     <div className={styles.mainAuth}>
       {error && (
         <Modal width="40%">
           <p className={styles.content}>{error}</p>
           <div className={styles.action}>
-            <Button onClick={hideCardItems}>بستن</Button>
+            <Button onClick={hideModal}>بستن</Button>
           </div>
         </Modal>
       )}
@@ -130,11 +127,10 @@ const Auth = React.memo(() => {
               type="text"
               placeholder="Enter user name..."
               value={userName}
-              isValid={formSubmit ? validUserName : !userNameError}
-              ref={userNameRef}
               onChange={userNameChange}
               onBlur={userNameBlur}
-              errorMessage={formSubmit ? !validUserName : userNameError}
+              isValid={formSubmit ? validUserName : !userNameError}
+              error="Username must be at least 4 characters long."
             />
           )}
 
@@ -144,11 +140,10 @@ const Auth = React.memo(() => {
             type="email"
             placeholder="Enter email..."
             value={email}
-            isValid={formSubmit ? validEmail : !emailError}
-            ref={emailInputRef}
             onChange={emailChange}
             onBlur={emailBlur}
-            errorMessage={formSubmit ? !validEmail : emailError}
+            isValid={formSubmit ? validEmail : !emailError}
+            error="Email must include '@gmail.com'."
           />
 
           <Input
@@ -157,11 +152,10 @@ const Auth = React.memo(() => {
             type="password"
             placeholder="Enter password..."
             value={password}
-            isValid={formSubmit ? validPassword : !passwordError}
-            ref={passwordInputRef}
             onChange={passwordChange}
             onBlur={passwordBlur}
-            errorMessage={formSubmit ? !validPassword : passwordError}
+            isValid={formSubmit ? validPassword : !passwordError}
+            error="Password must be at least 8 characters and include uppercase, lowercase, and a number."
           />
 
           <Button

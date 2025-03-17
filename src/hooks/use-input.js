@@ -18,7 +18,7 @@ const inputStateReducer = (state, action) => {
     case types.blur:
       if (state.isTuched) return state;
       return {
-        value: state.value,
+        ...state,
         isTuched: true,
       };
     case types.reset:

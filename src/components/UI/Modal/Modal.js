@@ -1,5 +1,4 @@
 import React, { memo, useContext } from "react";
-import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
 import { CartContext } from "../../../context/CartContext";
 import { AuthContext } from "../../../context/AuthContext";
@@ -9,7 +8,6 @@ const Backdrop = ({ onClose }) => {
 };
 
 const ModalOverlays = ({ children, width, loading }) => {
-
   const { userData } = useContext(AuthContext);
   const { items } = userData.checkout;
   const modalStyle =
@@ -21,21 +19,17 @@ const ModalOverlays = ({ children, width, loading }) => {
   );
 };
 
-const portalElement = document.getElementById("overlays");
-
 const Modal = ({ children, width, loading }) => {
-  const { hideCardItems, cardIsShown } = useContext(CartContext);
+  const { hideModal, modalIsShown } = useContext(CartContext);
 
   return (
-    cardIsShown && (
+    modalIsShown && (
       <>
-        {createPortal(<Backdrop onClose={hideCardItems} />, portalElement)}
-        {createPortal(
-          <ModalOverlays width={width} loading={loading}>
-            {children}
-          </ModalOverlays>,
-          portalElement
-        )}
+        <Backdrop onClose={hideModal} />
+        <ModalOverlays width={width} loading={loading}>
+          {children}
+        </ModalOverlays>
+        ,
       </>
     )
   );

@@ -1,12 +1,11 @@
 import { memo } from "react";
 import styles from "./Button.module.scss";
-const Button = ({ className, onClick, children, disabled, type }) => {
+const Button = ({ className, children, type, ...props }) => {
   return (
     <button
       type={type || "button"}
       className={`${className} ${styles.button}`}
-      onClick={onClick}
-      disabled={disabled}
+      {...props} // onClick , disabled
     >
       {children}
     </button>

@@ -18,7 +18,7 @@ const Cart = () => {
   const [isCheckOut, setIsCheckout] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
-  const { hideCardItems, cardIsShown } = useContext(CartContext);
+  const { hideModal, modalIsShown } = useContext(CartContext);
   const { userData, clearCheckout } = useContext(AuthContext);
   const { items, totalAmount } = userData.checkout;
   const totalAmountFixed = ` ${totalAmount?.toFixed(2) ?? 0} تومان`;
@@ -29,7 +29,8 @@ const Cart = () => {
   useEffect(() => {
     setIsCheckout(false);
     setDidSubmit(false);
-  }, [cardIsShown]);
+  }, [modalIsShown]);
+  
   const cartItems = (
     <ul className={styles["cart-item"]}>
       {items?.map((item) => (
@@ -66,7 +67,7 @@ const Cart = () => {
   };
   const modalAction = (
     <div className={styles.actions}>
-      <Button onClick={hideCardItems}>لغو</Button>
+      <Button onClick={hideModal}>لغو</Button>
       {hasItems && <Button onClick={orderHandler}>سفارش</Button>}
     </div>
   );
@@ -80,11 +81,11 @@ const Cart = () => {
         <span className={styles.totalAmount}> :جمع کل</span>
       </div>
       {isCheckOut && hasItems && (
-        <Checkout onConfirm={submitOrderHandler} onCancel={hideCardItems} />
+        <Checkout onConfirm={submitOrderHandler} onCancel={hideModal} />
       )}
       {!isCheckOut && modalAction}
       {isCheckOut && !hasItems && (
-        <Button className={styles.button} onClick={hideCardItems}>
+        <Button className={styles.button} onClick={hideModal}>
           لغو
         </Button>
       )}
@@ -97,7 +98,7 @@ const Cart = () => {
       <div className={styles.actions}>
         <Button
           onClick={() => {
-            hideCardItems();
+            hideModal();
             setDidSubmit(false);
           }}
         >
