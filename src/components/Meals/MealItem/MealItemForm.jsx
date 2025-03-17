@@ -39,7 +39,7 @@ const MealItemForm = ({ onAddToCart, id }) => {
       <Input
         className="ml-5"
         ref={amountInputRef}
-        label="تعداد"
+        label="تعداد:"
         input={{
           id: id,
           type: "number",
